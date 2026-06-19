@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Legends Roast Battle — by Faisal</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="index.css"/>
+
+
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">⚽</div>
+    <div class="nav-logo-text">Legends <span>Roast</span></div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-by">Built by <strong>Faisal</strong></div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark mode">
+      <span class="theme-icon sun">☀️</span>
+      <span class="theme-icon moon">🌙</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <!-- Animated pitch lines -->
+  <div class="hero-pitch">
+    <div class="pitch-line h" style="top:15%"></div>
+    <div class="pitch-line h" style="top:50%"></div>
+    <div class="pitch-line h" style="top:85%"></div>
+    <div class="pitch-line v" style="left:50%"></div>
+    <div class="pitch-circle" style="width:200px;height:200px"></div>
+    <div class="pitch-circle" style="width:500px;height:500px;opacity:0.04"></div>
+    <div class="pitch-circle" style="width:900px;height:900px;opacity:0.025"></div>
+  </div>
+
+  <!-- Ticker -->
+  <div class="hero-ticker">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- JS fills this -->
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      ⚽ Football's Most Savage Debate
+    </div>
+
+    <div class="hero-title-stack">
+      <div class="hero-word hw1"><span class="hero-word-inner">Legends</span></div>
+      <div class="hero-word hw2"><span class="hero-word-inner">Roast</span></div>
+      <div class="hero-word hw3"><span class="hero-word-inner">Battle</span></div>
+    </div>
+
+    <div class="hero-tagline">Where Greatness Gets Brutally Personal</div>
+
+    <p class="hero-desc">
+      Pick two football GOATs. Watch them <strong>tear each other apart</strong>, round by round, using real career facts, real failures, real controversies. Messi vs Ronaldo. Maradona vs Pelé. <strong>You set the fighters. AI writes the burns. You pick the winner.</strong>
+    </p>
+
+    <div class="hero-pills">
+      <div class="pill"><span class="pill-icon">🎯</span> Real career burns</div>
+      <div class="pill"><span class="pill-icon">🥊</span> Round-by-round format</div>
+      <div class="pill"><span class="pill-icon">📊</span> Live crowd reaction</div>
+      <div class="pill"><span class="pill-icon">🏆</span> You judge the winner</div>
+      <div class="pill"><span class="pill-icon">♾️</span> Any two legends</div>
+    </div>
+
+    <!-- API KEY CARD -->
+    <div class="api-card">
+      <div class="api-card-header">
+        <div class="api-card-icon">🔑</div>
+        <div class="api-card-title">Groq API Key</div>
+      </div>
+      <div class="api-card-sub">
+        Uses Groq's LLaMA model for real-time AI roasts. Get a free key at <a href="https://console.groq.com" target="_blank">console.groq.com</a>
+      </div>
+
+      <div class="api-divider">Enter your Groq API key below</div>
+
+      <div class="api-input-row">
+        <input type="password" class="api-input" id="apiKeyInput" placeholder="Paste your Groq key here..." autocomplete="off"/>
+        <button class="api-save-btn" onclick="saveApiKey()">Save</button>
+      </div>
+      <div class="api-status" id="apiStatus"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MAIN BATTLE SETUP ══════════ -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-eyebrow"><span class="eyebrow-line"></span> Choose Your Fighters <span class="eyebrow-line"></span></div>
+    <h2 class="section-title">Set Up the Matchday</h2>
+  </div>
+
+  <!-- MATCHDAY CARD -->
+  <div class="matchday-card">
+    <div class="matchday-top">
+      <div class="matchday-label">⚽ Legends Roast Battle — Select Fighters</div>
+      <div class="matchday-live"><span class="live-dot"></span> AI Live</div>
+    </div>
+
+    <div class="matchday-body">
+      <!-- RED -->
+      <div class="fighter-side red-side">
+        <div class="fighter-corner-tag red-tag">🔴 Red Corner</div>
+        <select class="fighter-select" id="f1Select" onchange="handleSelect('f1')">
+          <option value="">— Select a legend —</option>
+          <option>Lionel Messi</option>
+          <option>Cristiano Ronaldo</option>
+          <option>Diego Maradona</option>
+          <option>Pelé</option>
+          <option>Zinedine Zidane</option>
+          <option>Ronaldo Nazário</option>
+          <option>Ronaldinho</option>
+          <option>Thierry Henry</option>
+          <option>Zlatan Ibrahimović</option>
+          <option>Neymar Jr</option>
+          <option>Luka Modrić</option>
+          <option>Kylian Mbappé</option>
+          <option>Johan Cruyff</option>
+          <option>George Best</option>
+          <option value="custom">✏️ Someone else...</option>
+        </select>
+        <input class="custom-input" id="f1Custom" placeholder="Type any football legend..." type="text"/>
+      </div>
+
+      <!-- VS -->
+      <div class="vs-col">
+        <div class="vs-text">VS</div>
+      </div>
+
+      <!-- BLUE -->
+      <div class="fighter-side blue-side">
+        <div class="fighter-corner-tag blue-tag">🔵 Blue Corner</div>
+        <select class="fighter-select" id="f2Select" onchange="handleSelect('f2')">
+          <option value="">— Select a legend —</option>
+          <option>Lionel Messi</option>
+          <option>Cristiano Ronaldo</option>
+          <option>Diego Maradona</option>
+          <option>Pelé</option>
+          <option>Zinedine Zidane</option>
+          <option>Ronaldo Nazário</option>
+          <option>Ronaldinho</option>
+          <option>Thierry Henry</option>
+          <option>Zlatan Ibrahimović</option>
+          <option>Neymar Jr</option>
+          <option>Luka Modrić</option>
+          <option>Kylian Mbappé</option>
+          <option>Johan Cruyff</option>
+          <option>George Best</option>
+          <option value="custom">✏️ Someone else...</option>
+        </select>
+        <input class="custom-input" id="f2Custom" placeholder="Type any football legend..." type="text"/>
+      </div>
+    </div>
+
+    <div class="matchday-footer">
+      <div class="round-label-text">Rounds</div>
+      <div class="round-chips">
+        <button class="round-chip" onclick="setRounds(2)">2</button>
+        <button class="round-chip active" onclick="setRounds(3)">3</button>
+        <button class="round-chip" onclick="setRounds(4)">4</button>
+        <button class="round-chip" onclick="setRounds(5)">5</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="kickoff-wrap">
+    <button class="kickoff-btn" id="kickoffBtn" onclick="startBattle()">
+      <span class="kickoff-ball">⚽</span>
+      Kick Off the Roast
+    </button>
+  </div>
+
+  <!-- ══════════ ARENA ══════════ -->
+  <div class="arena" id="arena">
+<div class="battle-fighters" id="battleFighters" style="display:none">
+  <div class="legend-card">
+    <img id="legendImg1" class="legend-photo" src="" alt="Legend 1">
+    <div id="legendLabel1"></div>
+  </div>
+  <div class="legend-card">
+    <img id="legendImg2" class="legend-photo" src="" alt="Legend 2">
+    <div id="legendLabel2"></div>
+  </div>
+</div>
+
+
+    <div class="scoreboard" id="scoreboard">
+      <div class="score-fighter">
+        <div class="score-name red-name" id="scoreName1">—</div>
+        <div class="score-tag red-tag-sm">Red Corner</div>
+      </div>
+      <div class="score-mid">
+        <div class="score-round-num" id="scoreRoundInfo">Round 1 of 3</div>
+        <div class="score-fire">🔥</div>
+      </div>
+      <div class="score-fighter">
+        <div class="score-name blue-name" id="scoreName2">—</div>
+        <div class="score-tag blue-tag-sm">Blue Corner</div>
+      </div>
+    </div>
+
+    <div class="rounds-container" id="roundsContainer"></div>
+
+    <div class="typing-wrap" id="typingWrap">
+      <div class="typing-dots">
+        <div class="tdot"></div>
+        <div class="tdot"></div>
+        <div class="tdot"></div>
+      </div>
+      <div class="typing-text" id="typingText">Generating Round 1...</div>
+    </div>
+
+    <!-- VOTE -->
+    <div class="vote-card" id="voteCard">
+      <div class="vote-title">Who Won? 🏆</div>
+      <div class="vote-sub">You watched the battle. Now you decide who got destroyed.</div>
+      <div class="vote-btns">
+        <button class="vote-btn vb-red" onclick="castVote('red')">
+          <span class="vote-btn-icon">🔴</span>
+          <span id="voteN1">—</span>
+          <span class="vote-btn-sub">Red Corner</span>
+        </button>
+        <button class="vote-btn vb-tie" onclick="castVote('tie')">
+          <span class="vote-btn-icon">🤝</span>
+          Tie
+          <span class="vote-btn-sub">Too close</span>
+        </button>
+        <button class="vote-btn vb-blue" onclick="castVote('blue')">
+          <span class="vote-btn-icon">🔵</span>
+          <span id="voteN2">—</span>
+          <span class="vote-btn-sub">Blue Corner</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- WINNER -->
+    <div class="winner-card" id="winnerCard">
+      <div class="winner-trophy">🏆</div>
+      <div class="winner-eyebrow">The Crowd Has Spoken</div>
+      <div class="winner-name" id="winnerName">—</div>
+      <div class="winner-verdict" id="winnerVerdict">Generating verdict...</div>
+    </div>
+
+    <button class="replay-btn" id="replayBtn" onclick="restartBattle()">↩ New Battle</button>
+
+  </div>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Legends <span>Roast</span> Battle</div>
+    <div class="footer-by">Designed & built by <strong>Faisal</strong> ⚽</div>
+    <div class="footer-divider"></div>
+    <div class="footer-copy">Powered by Groq × LLaMA · All player facts are real · Burns are fictional entertainment</div>
+  </div>
+</footer>
+
+<script src="index.js" defer></script>
+
+</body>
+</html>
