@@ -38,7 +38,7 @@ The project is designed for football fans who enjoy discussing the greatest play
 ## Setup
 This project uses the Groq API to generate battle arguments and final verdicts.
 1. Create a Groq account.
-2. Generate an API key from:
+2. Generate an API key from the given link:
    https://console.groq.com/keys
 3. Copy your API key.
 4. Paste the key into the application's API key field.
